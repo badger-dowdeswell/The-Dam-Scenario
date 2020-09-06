@@ -123,15 +123,17 @@ public class DiagnosticTeam extends Team {
 					// Let him get on with it. Ask GORITE to come back and check later. 
 					sleep(1000);
 					return Goal.States.STOPPED;
+					
+				} else if ((marvin.currentGoalState() == Goal.States.PASSED) || (marvin.currentGoalState() == (Goal.States.FAILED) )) {	
+					// The current assigned goal has been completed.
+					return marvin.currentGoalState();
+					
 				} else if (marvin.currentGoalName() == UNDEFINED_GOAL) {
-					// Agent is awaiting a new goal to execute. 
+					// The agent is awaiting a new goal to execute. 
 					// RA_BRD - trialing a new Goal State for asynchronous agent operation.
 					// Start marvin configuring stuff and then leave him to it..
 					marvin.currentGoalName(CONFIGURE_DIAGNOSTICS);					
 					marvin.currentGoalState(Goal.States.EXECUTING);
-				} else {
-					// The goal has been completed or has failed.
-					return marvin.currentGoalState();
 				}
 				return Goal.States.STOPPED;
 			}
@@ -153,14 +155,30 @@ public class DiagnosticTeam extends Team {
 			//
 			// execute()
 			// =========
-			public Goal.States execute(Data data) {	
+			public Goal.States execute(Data data) {
 				say("Executing goal watchForFaults().");
-				return Goal.States.PASSED;
-		//		delay(500);
-		//		Thread.currentThread().yield();
-		//		return Goal.States.STOPPED;
-			}	
-		};		
+				
+				say(" >" + marvin.currentGoalState());
+				
+				if (marvin.currentGoalState() == Goal.States.EXECUTING) {
+					// Let him get on with it. Ask GORITE to come back and check later. 
+					sleep(1000);
+					return Goal.States.STOPPED;
+					
+				} else if ((marvin.currentGoalState() == Goal.States.PASSED) || (marvin.currentGoalState() == (Goal.States.FAILED) )) {	
+					// The current assigned goal has been completed.
+					return marvin.currentGoalState();
+					
+				} else if (marvin.currentGoalName() == UNDEFINED_GOAL) {
+					// The agent is awaiting a new goal to execute. 
+					// RA_BRD - trialing a new Goal State for asynchronous agent operation.
+					// Start marvin configuring stuff and then leave him to it..
+					marvin.currentGoalName(WATCH_FOR_FAULTS);					
+					marvin.currentGoalState(Goal.States.EXECUTING);
+				}
+				return Goal.States.STOPPED;
+			}
+		};
 	}			
 				
 	//
@@ -174,8 +192,26 @@ public class DiagnosticTeam extends Team {
 			// =========
 			public Goal.States execute(Data data) {
 				say("Executing goal diagnoseFaults().");
-				boolean status = false;
-				return Goal.States.PASSED;
+				
+				say(" >" + marvin.currentGoalState());
+				
+				if (marvin.currentGoalState() == Goal.States.EXECUTING) {
+					// Let him get on with it. Ask GORITE to come back and check later. 
+					sleep(1000);
+					return Goal.States.STOPPED;
+					
+				} else if ((marvin.currentGoalState() == Goal.States.PASSED) || (marvin.currentGoalState() == (Goal.States.FAILED) )) {	
+					// The current assigned goal has been completed.
+					return marvin.currentGoalState();
+					
+				} else if (marvin.currentGoalName() == UNDEFINED_GOAL) {
+					// The agent is awaiting a new goal to execute. 
+					// RA_BRD - trialing a new Goal State for asynchronous agent operation.
+					// Start marvin configuring stuff and then leave him to it..
+					marvin.currentGoalName(DIAGNOSE_FAULTS);					
+					marvin.currentGoalState(Goal.States.EXECUTING);
+				}
+				return Goal.States.STOPPED;
 			}
 		};
 	}
@@ -191,7 +227,26 @@ public class DiagnosticTeam extends Team {
 			// =========
 			public Goal.States execute(Data data) {
 				say("Executing goal reportFaults().");
-				return Goal.States.PASSED;
+				
+				say(" >" + marvin.currentGoalState());
+				
+				if (marvin.currentGoalState() == Goal.States.EXECUTING) {
+					// Let him get on with it. Ask GORITE to come back and check later. 
+					sleep(1000);
+					return Goal.States.STOPPED;
+					
+				} else if ((marvin.currentGoalState() == Goal.States.PASSED) || (marvin.currentGoalState() == (Goal.States.FAILED) )) {	
+					// The current assigned goal has been completed.
+					return marvin.currentGoalState();
+					
+				} else if (marvin.currentGoalName() == UNDEFINED_GOAL) {
+					// The agent is awaiting a new goal to execute. 
+					// RA_BRD - trialing a new Goal State for asynchronous agent operation.
+					// Start marvin configuring stuff and then leave him to it..
+					marvin.currentGoalName(REPORT_FAULTS);					
+					marvin.currentGoalState(Goal.States.EXECUTING);
+				}
+				return Goal.States.STOPPED;
 			}
 		};
 	}

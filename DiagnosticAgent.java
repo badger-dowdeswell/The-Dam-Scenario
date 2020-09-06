@@ -82,18 +82,24 @@ public class DiagnosticAgent implements Runnable {
 			
 			switch (currentGoalName) {
 			case CONFIGURE_DIAGNOSTICS:
-				configureDiagnostics();
-				currentGoalState(Goal.States.PASSED);
+				currentGoalState(configureDiagnostics());				
+				currentGoalName(UNDEFINED_GOAL);				
 				break;
 			
 			case WATCH_FOR_FAULTS:
+				currentGoalState(watchForFaults());
+				currentGoalName(UNDEFINED_GOAL);				
 				break;
 				
 			case DIAGNOSE_FAULTS:
-				break;
+				currentGoalState(diagnoseFaults());
+				currentGoalName(UNDEFINED_GOAL);				
+				break;				
 				
 			case REPORT_FAULTS:
-				break;
+				currentGoalState(reportFaults());
+				currentGoalName(UNDEFINED_GOAL);				
+				break;				
 				
 			case UNDEFINED_GOAL:
 				// The agent is idling with no assigned goal at the moment, so sleep ..
@@ -127,97 +133,60 @@ public class DiagnosticAgent implements Runnable {
 	//  except the final reporting goal.
 	// 
 	private Goal.States configureDiagnostics() {
-		//say(agentName + " " + currentGoalName());
 		for (int cnt = 0; cnt < 5; cnt ++) {
 			say("configuring stuff [" + cnt + "] ...\n");
 			sleep(1000);
 		}
 		
-		// Signal that marvin has completed this...
-		currentGoalState(Goal.States.PASSED);
+		// Signal that the agent has completed this...or it has failed..
+		//currentGoalState(Goal.States.PASSED);
 		return Goal.States.PASSED;
 	}
 	
-
-	
-	
-	//	say("Setting up goal configureDiagnostics()");
-	//	return new Goal (CONFIGURE_DIAGNOSTICS) {
-	//		// 
-	///			//  execute()
-	//		//  =========
-	//		public Goal.States execute(Data data) {
-	//					
-	//				//return Goal.States.PASSED;
-	//				return Goal.States.FAILED;
-	//		}
-	//	};
-	//}
-
 	// 
-	//  identifyFault()
-	//  ===============
+	//  watchForFaults()
+	//  ================
 	//  This goal performs the primary goal of watching the function block application and
 	//  identifying when a fault symptom appears.
 	// 
 	//  RA_BRD dynamic diagnostic monitor launch code for later
 	//  skills.runDiagnostic(applicationPath, "MyClass"); System.exit(0); 
 	// 
-	Goal identifyFault() {
-		say("Setting up goal identifyFault()");
-		return new Goal (WATCH_FOR_FAULTS) {
-			// 
-			//  execute()
-			//  =========
-			@SuppressWarnings("static-access")
-			public Goal.States execute(Data data) {	
-				
-				say("\n" + agentName + ": ready in identifyFault()\n");
-				return Goal.States.PASSED;
-				//} else {
-				//	delay(500);
-				//	Thread.currentThread().yield();
-				//	return Goal.States.STOPPED;
-				//}	
-			}	
-		};		
+	private Goal.States watchForFaults(){
+		for (int cnt = 0; cnt < 10; cnt ++) {
+			say("hunting for faults [" + cnt + "] ...\n");
+			sleep(1000);
+		}
+			
+		// Signal that the agent has completed this...or it has failed..
+		currentGoalState(Goal.States.PASSED);
+		return Goal.States.PASSED;
 	}			
 				
 	// 
-	//  diagnoseFault()
-	//  ===============
-	Goal diagnoseFault() {
-		say("Setting up goal diagnoseFault()");
-		return new Goal (DIAGNOSE_FAULTS) {
-			// 
-			//  execute()
-			//  =========
-			public Goal.States execute(Data data) {
-				boolean status = false;
-				say("\n" + agentName + ": ready in diagnoseFault()\n");
-				
-				return Goal.States.PASSED;
-			}
-		};
+	//  diagnoseFaults()
+	//  ================
+	private Goal.States diagnoseFaults() {
+		for (int cnt = 0; cnt < 10; cnt ++) {
+			say("diagnosing a specific fault [" + cnt + "] ...\n");
+			sleep(1000);
+		}
+		// Signal that the agent has completed this...or it has failed..
+		//currentGoalState(Goal.States.PASSED);
+		return Goal.States.PASSED;
 	}
 
 	// 
-	//  reportFault()
+	//  reportFaults()
 	//  =============
-	Goal reportFault() {
-		say("Setting up goal reportFault()");
-		return new Goal (REPORT_FAULTS) {
-			// 
-			//  execute()
-			//  =========
-			public Goal.States execute(Data data) {
-				say("\n" + agentName + ": ready in reportFault()\n");
-				
-				//  Present a diagnosis
-
-				return Goal.States.PASSED;
-			}
-		};
+	private Goal.States reportFaults() {
+		for (int cnt = 0; cnt < 2; cnt ++) {
+			say("preparing diagnosis report [" + cnt + "] ...\n");
+			sleep(1000);
+		}
+		// Signal that the agent has completed this...or it has failed..
+		//currentGoalState(Goal.States.PASSED);
+		return Goal.States.PASSED;
 	}
 	
 	//
