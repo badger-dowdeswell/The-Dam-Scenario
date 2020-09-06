@@ -12,7 +12,7 @@
 // 23.05.2019 BRD Original version based on the agents from the Dam Scenario and comments
 //                from Dennis Jarvis.
 // 01.09.2020 BRD Create pseudo goal execute() methods in this class to allow this agent
-//                work independently.
+//                to work independently.
 // 
 // Documentation
 // =============
@@ -43,7 +43,6 @@ import java.io.IOException;
 import TheDamScenario.ExitCodes;
 import static TheDamScenario.Constants.*;
 
-//public class DiagnosticAgent extends Performer implements Runnable {
 public class DiagnosticAgent implements Runnable {
 	//  Used to turn off and on console messages during development.
 	private boolean isSilent = false;
@@ -61,13 +60,6 @@ public class DiagnosticAgent implements Runnable {
 	//  RA_BRD - should this information come from the Team?
 	String applicationPath = homeDirectory + "/Development/4diac/HVAC/";
 	private String applicationName = "HVAC";
-
-//	Action diagnose = new Action(DiagnosticTeam.FIND_FAULTS) {
-//		public Goal.States execute(
-//			boolean reentry, Data.Element[] ins, Data.Element[] outs) {
-//			return Goal.States.PASSED;
-//		}
-//	};
 
 	// 
 	//  run()
@@ -113,14 +105,6 @@ public class DiagnosticAgent implements Runnable {
 		//super(agentName);
 		this.agentName = agentName;
 		say("Created DiagnosticAgent " + agentName);
-		
-		//  Create and add team goals to this agent. The method create() takes as its
-		//  arguments the names of the elements in the data context that
-		//  are to be used as the inputs and outputs for the goal execution.
-		//  Execution will not proceed until all inputs have been assigned values.
-		// 
-	//	addGoal(diagnose.create(new String[] {DiagnosticTeam.FIND_FAULTS}, null));
-	//	say("Assigned role FIND_FAULTS to " + this.agentName + "\n");
 	}
 
 	// 

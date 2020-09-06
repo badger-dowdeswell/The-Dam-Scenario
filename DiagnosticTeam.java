@@ -51,9 +51,8 @@ public class DiagnosticTeam extends Team {
 		new Thread(marvin).start();
 		say("Created Marvin.");
 		
-//		
-//		new Thread(dennis).start();
-//		say ("Created Dennis.");
+		new Thread(dennis).start();
+		say ("Created Dennis.");
 		
 		say("Agents operating..\n");
 	
@@ -120,7 +119,7 @@ public class DiagnosticTeam extends Team {
 				say(" >" + marvin.currentGoalState());
 				
 				if (marvin.currentGoalState() == Goal.States.EXECUTING) {
-					// Let him get on with it. Ask GORITE to come back and check later. 
+					// Let the agent get on with it. Ask GORITE to come back and check later. 
 					sleep(1000);
 					return Goal.States.STOPPED;
 					
@@ -161,7 +160,7 @@ public class DiagnosticTeam extends Team {
 				say(" >" + marvin.currentGoalState());
 				
 				if (marvin.currentGoalState() == Goal.States.EXECUTING) {
-					// Let him get on with it. Ask GORITE to come back and check later. 
+					// Let the agent get on with it. Ask GORITE to come back and check later. 
 					sleep(1000);
 					return Goal.States.STOPPED;
 					
@@ -196,7 +195,7 @@ public class DiagnosticTeam extends Team {
 				say(" >" + marvin.currentGoalState());
 				
 				if (marvin.currentGoalState() == Goal.States.EXECUTING) {
-					// Let him get on with it. Ask GORITE to come back and check later. 
+					// Let the agent get on with it. Ask GORITE to come back and check later. 
 					sleep(1000);
 					return Goal.States.STOPPED;
 					
@@ -231,7 +230,7 @@ public class DiagnosticTeam extends Team {
 				say(" >" + marvin.currentGoalState());
 				
 				if (marvin.currentGoalState() == Goal.States.EXECUTING) {
-					// Let him get on with it. Ask GORITE to come back and check later. 
+					// Let the agent get on with it. Ask GORITE to come back and check later. 
 					sleep(1000);
 					return Goal.States.STOPPED;
 					

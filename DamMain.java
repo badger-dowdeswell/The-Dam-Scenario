@@ -34,8 +34,7 @@ public class DamMain {
     public static void main(String[] args) throws Throwable {
     	say("\nTHE DAM SCENARIO version " + appVersion + "\n");
    		
-    	// Start building our teams in GORITE
-    	
+    	// Start building our teams in GORITE    	
     	DiagnosticTeam diagnosticTeam = new DiagnosticTeam("diagnosticTeam");
 
     	// Start the team of agents hunting for and diagnosing faults.

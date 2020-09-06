@@ -3,7 +3,7 @@
 // =========
 // Class that declares all the shared constants used in the project.
 //
-// AUT University 
+// AUT University - 2017-2020
 //
 // Revision History
 // ================
